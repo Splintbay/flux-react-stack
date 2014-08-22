@@ -1,0 +1,41 @@
+{
+  "name": "flux-react-stack",
+  "version": "0.0.0",
+  "description": "A basic flux-react-stack",
+  "main": "js/app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Splintbay/flux-react-stack.git"
+  },
+  "author": "Skage Spjelkavik",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Splintbay/flux-react-stack/issues"
+  },
+  "homepage": "https://github.com/Splintbay/flux-react-stack",
+  "devDependencies": {
+    "browserify": "^5.10.1",
+    "envify": "^3.0.0",
+    "reactify": "^0.14.0",
+    "statics": "^0.1.0",
+    "uglify-js": "^2.4.15",
+    "watchify": "^1.0.2",
+    "jest-cli": "^0.1.18"
+  },
+  "dependencies": {
+    "es6-promise": "^1.0.0",
+    "react": "^0.11.1"
+  },
+    "scripts": {
+        "start": "STATIC_ROOT=./static watchify -o js/bundle.js -v -d .",
+        "build": "STATIC_ROOT=./static NODE_ENV=production browserify . | uglifyjs -cm > js/bundle.min.js",
+        "collect-static": "collect-static . ./static",
+        "test": "jest"
+    },
+    "browserify": {
+        "transform": [
+            "reactify",
+            "envify"
+        ]
+    }
+}
